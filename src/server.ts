@@ -1,14 +1,13 @@
 import mongoose from "mongoose";
 import app from "./app";
+import "dotenv/config";
 
 const port: number = 5000;
 
 //database connection
 async function server() {
   try {
-    await mongoose.connect(
-      "mongodb+srv://pieash9:nVoDIXXg0nKuhJMX@cluster0.2au1tbt.mongodb.net/practice-mongoose?retryWrites=true&w=majority"
-    );
+    await mongoose.connect(process.env.DB_URL);
     console.log(`🛢 Database connection successful`);
 
     app.listen(port, () => {
