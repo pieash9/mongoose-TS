@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import {
   createUserToDB,
+  getAllAdminUsersFromDB,
   getUserByIdFromDB,
   getUsersFromDB,
 } from "./user.service";
@@ -28,6 +29,13 @@ export const getUserByID = async (req: Request, res: Response) => {
   res.status(200).json({
     status: "success",
     data: user,
+  });
+};
+export const getAdminUsers = async (req: Request, res: Response) => {
+  const admin = await getAllAdminUsersFromDB();
+  res.status(200).json({
+    status: "success",
+    data: admin,
   });
 };
 
